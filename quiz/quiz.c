@@ -2,7 +2,7 @@
 
 void QUIZ_Init(Quiz *q, char* filename) {
 	q->f = fopen(filename,"r");
-	for(int i = 0; i<5; i++){
+	for(int i = 0; i<20; i++){
 		char buf[255];
 		fgets(buf, sizeof(buf),q->f);
 		strcpy(q->questions[i].question,buf);
@@ -15,3 +15,4 @@ void QUIZ_Init(Quiz *q, char* filename) {
 	}
 
 	fclose(q->f);
+}

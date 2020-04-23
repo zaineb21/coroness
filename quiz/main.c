@@ -20,7 +20,7 @@ int main() {
 	int running = 1;
 	int currentChoice = 0;
 	srand(time(NULL));
-	int qid = random()%5;
+	int qid = random()%20;
 	int choices[3] = {0,1,2};
 //Generation alea 
 	for(int i = 0; i<5; i++)
@@ -42,7 +42,7 @@ int main() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	TTF_Init();
 	
-	screen = SDL_SetVideoMode(1024,630,32,SDL_HWSURFACE);
+	screen = SDL_SetVideoMode(1024,630,32,SDL_HWSURFACE | SDL_DOUBLEBUF);
 
 	SDL_Event event;
 
@@ -50,9 +50,6 @@ int main() {
 	SDL_Color color = {0,0,0};
 	font2= TTF_OpenFont("font2.ttf",25);
 	SDL_Color color2= {0,0,255};
-	font3= TTF_OpenFont("font3.ttf",40);
-	SDL_Color color3= {0,255,0};
-	SDL_Color color4 = {255,0,0};
 
 	
 
@@ -123,15 +120,15 @@ int main() {
 	SDL_BlitSurface(msg,NULL,screen,&rect);
 	rect1.x=93.6;
 	rect1.y = 532.8;
-	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[0]) , color);
+	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[0]) , color2);
 	SDL_BlitSurface(msg,NULL,screen,&rect1);
 	rect2.x=453.6;
 	rect2.y = 532.8;
-	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[1]) , color);
+	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[1]) , color2);
 	SDL_BlitSurface(msg,NULL,screen,&rect2);
         rect3.x=770.4;
 	rect3.y = 532.8;
-	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[2]), color);
+	msg = TTF_RenderText_Solid(font, getQuestion(&q.questions[qid],choices[2]), color2);
 	SDL_BlitSurface(msg,NULL,screen,&rect3);
 	choice.x = 80+currentChoice*338.5;
 	SDL_BlitSurface(arrow,NULL,screen,&choice);
