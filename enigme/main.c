@@ -3,7 +3,9 @@
 #include<string.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "enigme.h"
+#include "enig.h"
+#include<time.h>
+
 int main()
 { 
 
@@ -12,6 +14,7 @@ int main()
 	int s,r,run =1,running=1,alea;
 	char image[30]="";
 	SDL_Event event;
+    srand(time(NULL));
    
 	 
 	 SDL_Init ( SDL_INIT_VIDEO ) ;
@@ -32,7 +35,7 @@ int main()
 			  break ;
             }	
         	
-      generate_afficher (screen,image,&e,&alea) ;
+      generate_afficher ( screen  , image ,&e,&alea) ;
 	        
 
       s=solution_e (image );
